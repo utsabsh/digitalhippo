@@ -4,17 +4,16 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { zodResolver } from "@hookform/resolvers/zod";
 
-import React from "react";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
 import {
   AuthCredentialsValidator,
   TAuthCredentialsValidator,
 } from "@/lib/validators/account-credentials-validators";
+import { trpc } from "@/trpc/client";
+import { useForm } from "react-hook-form";
 
 const page = () => {
   const {
@@ -25,6 +24,8 @@ const page = () => {
   } = useForm<TAuthCredentialsValidator>({
     resolver: zodResolver(AuthCredentialsValidator),
   });
+  const { data } = trpc.anyApiRoute.useQuery();
+  console.log(data);
   const onSubmit = ({ email, password }: TAuthCredentialsValidator) => {
     //send data to the server
   };
