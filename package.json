@@ -44,6 +44,7 @@
   "devDependencies": {
     "@types/express": "github:types/express",
     "@types/node": "^20.16.5",
+    "@types/nodemailer": "^6.4.15",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",
