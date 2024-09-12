@@ -16,14 +16,23 @@ export const Products: CollectionConfig = {
         condition: () => false,
       },
     },
-    { name: "name", label: "name", type: "text", required: true },
-    { name: "description", type: "textarea", label: "Product Details" },
+    {
+      name: "name",
+      label: "Name",
+      type: "text",
+      required: true,
+    },
+    {
+      name: "description",
+      type: "textarea",
+      label: "Product details",
+    },
     {
       name: "price",
-      type: "number",
       label: "Price in USD",
       min: 0,
       max: 1000,
+      type: "number",
       required: true,
     },
     {
@@ -33,14 +42,14 @@ export const Products: CollectionConfig = {
       options: PRODUCT_CATEGORIES.map(({ label, value }) => ({ label, value })),
       required: true,
     },
-    // {
-    //   name: "product_files",
-    //   label: "Product file(s)",
-    //   type: "relationship",
-    //   required: true,
-    //   relationTo: "product_files",
-    //   hasMany: false,
-    // },
+    {
+      name: "product_files",
+      label: "Product file(s)",
+      type: "relationship",
+      required: true,
+      relationTo: "product_files",
+      hasMany: false,
+    },
     {
       name: "approvedForSale",
       label: "Product Status",
@@ -93,13 +102,13 @@ export const Products: CollectionConfig = {
     {
       name: "images",
       type: "array",
-      label: "Product Images",
+      label: "Product images",
       minRows: 1,
       maxRows: 4,
       required: true,
       labels: {
         singular: "Image",
-        plural: "images",
+        plural: "Images",
       },
       fields: [
         {
